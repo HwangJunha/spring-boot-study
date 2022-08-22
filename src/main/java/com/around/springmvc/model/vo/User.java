@@ -1,4 +1,4 @@
-package com.around.springmvc.user;
+package com.around.springmvc.model.vo;
 
 public class User {
 
