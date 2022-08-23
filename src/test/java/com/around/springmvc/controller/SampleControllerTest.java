@@ -1,5 +1,6 @@
 package com.around.springmvc.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlHeading1;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -28,6 +29,9 @@ public class SampleControllerTest {
     @Autowired
     WebClient webClient;
 
+    @Autowired
+    ObjectMapper objectMapper;
+
     @Test
     public void hello() throws  Exception{
         // 요청 "/hello"
@@ -46,5 +50,13 @@ public class SampleControllerTest {
         HtmlPage page = webClient.getPage("/hello");
         HtmlHeading1 h1 = page.getFirstByXPath("//h1");
         assertThat(h1.getTextContent()).isEqualToIgnoringCase("junha");
+    }
+
+    @Test
+    public void hateoas() throws Exception {
+        mockMvc.perform(get("/hateoas"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$._links.self").exists());
     }
 }
