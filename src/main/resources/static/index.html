@@ -6,6 +6,19 @@
 </head>
 <body>
 <h2>junha Hello!!S</h2>
-Hello Static resource AHAHAH LOL
+CORS Client
+<script src="/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
+<script>
+    $(function(){
+        $.ajax("http://localhost:8080/hello")
+            .done(function (msg){
+                alert(msg);
+            })
+            .fail(function (){
+                alert('fail');
+            });
+
+    })
+</script>
 </body>
 </html>
