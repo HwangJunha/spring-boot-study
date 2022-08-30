@@ -25,12 +25,12 @@ public class H2Runner implements ApplicationRunner {
             connection.getMetaData().getURL();
             connection.getMetaData().getUserName();
             Statement statement = connection.createStatement();
-            //String sql = "CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))";
+            String sql = "CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))";
 
-            //statement.executeUpdate(sql);
+            statement.executeUpdate(sql);
 
         }
-        //jdbcTemplate.execute("INSERT INTO USER VALUES (1, 'junha')");
+        jdbcTemplate.execute("INSERT INTO USER VALUES (1, 'junha')");
 
     }
 }
